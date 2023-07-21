@@ -17,7 +17,8 @@ Call me old-fashioned, but I tend to think that names of things are there to con
 
 *  ~~Generators of algebraic group~~
 *  ~~Generating Random Numbers/Objects~~ Confusingly there is some relation but it's not the reason for the name
-*  These functions of boring indeterminate $$x$$ "generate" coefficients of interest when we take their products
+*  These functions of boring indeterminate $$x$$ "generate" coefficients of interest when we construct them
+
 Now, lets do a little **Hello World** example, which we will explain so thoroughly, that it will be enough to call it a day. 
 
 # Magical Dice Challenge (Easy)
