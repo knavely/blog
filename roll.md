@@ -13,11 +13,11 @@ Generating Functions were a tool that stuck with me after undergrad, that has be
 
 
 # Why are they called Generating Functions?
-Call me old-fashioned, but I tend to think that names of things are there to convey useful information about the thing they are the names of... I think a lot of people tend skip with this stuff. In fact, I am not sure I have ever had it explained to me. Once it clicks of course, the name makes sense, but before then one's imagination can easily get the better of them. especially if you are familiar with other mathematical concepts that sound similar. 
+Call me old-fashioned, but I tend to think that names of things are there to convey useful information about the thing they are the names of... I think a lot of people tend skip with this stuff. In fact, I am not sure I have ever had it explained to me. Once it clicks of course, the name makes sense, but before then one's imagination can easily get the better of them. especially if you are familiar with other mathematical concepts that sound similar, which of course then is made more confusing by the fact that all of Mathematics is somehow connected... 
 
-*  ~~Generators of algebraic group~~
-*  ~~Generating Random Numbers/Objects~~ Confusingly there is some relation but it's not the reason for the name
-*  These functions of boring indeterminate $$x$$ "generate" coefficients of interest when we construct them
+*  NOT _Generators of algebraic group_. OK, they are algebraic objects but we aren't really concerned Abstract Algebra here. 
+*  NOT _Generating Random Numbers/Objects_ Confusingly there is some relation but it's not the reason for the name
+*  My guess is that they are called this because, the process in which they are constructed "generates" coefficients of great interest 
 
 Now, lets do a little **Hello World** example, which we will explain so thoroughly, that it will be enough to call it a day. 
 
@@ -28,7 +28,7 @@ Now, lets do a little **Hello World** example, which we will explain so thorough
 This is certainly not meant to be hard. Almost any technique will work, but you might be surprised that a solution boils down to not much more than writing two small polynomials and multiplying them together.
 
 Recall the definition of expected value. Let sum denote the outcome of the first dice + the second dice when rolled. We need to compute  
-<span style="color:pink;font-weight:700;font-size:30px">
+<span style="color:pink;font-weight:700;font-size:20px">
 $$\mathbb{E}(\text{dice sum}) = \sum_k k\mathbb{P}(\text{dice sum}=k)$$
 </span>
 
@@ -41,7 +41,7 @@ Instead of labeling the sides numerically, do it with powers of $$x$$
 <img src="assets/images/x3.png" width="200"/>
 
 When we roll it we could get $$x^1$$ OR $$x^2$$ OR $$x^3$$, replacing the OR with $$+$$ gives us the algebraic generating function interpretation 
-<span style="color:gold;font-weight:700;font-size:30px"> $$D_1(x) := x^1 + x^2 + x^3$$ </span> 
+<span style="color:gold;font-weight:700;font-size:20px"> $$D_1(x) := x^1 + x^2 + x^3$$ </span> 
 
 # Four sides of Dice II + Disappearing non-side
 <img src="assets/images/x00.png" width="200"/>
@@ -50,7 +50,7 @@ When we roll it we could get $$x^1$$ OR $$x^2$$ OR $$x^3$$, replacing the OR wit
 <img src="assets/images/x3.png" width="200"/>
 <img src="assets/images/x4.png" width="200"/>
 
-<span style="color:gold;font-weight:700;font-size:30px">
+<span style="color:gold;font-weight:700;font-size:20px">
 $$D_2(x) := x^0 + x^1 + x^2 + x^3 + x^4$$ </span> 
 
 # Roll the Dice
@@ -58,16 +58,16 @@ Clearly the coefficients of $$x^i$$ in $$D_1$$ and $$D_2$$ correspond to the num
 
 Slightly less obvious is that the coefficient of $$x^i$$ in the product $$D_1 \cdot D_2$$ is the number of ways of rolling $i$ as a sum of both dice. 
 
-<span style="color:silver;font-weight:700;font-size:30px">
+<span style="color:silver;font-weight:700;font-size:20px">
 $$\text{Roll}(x) := D_1(x) \cdot D_2(x) = (x + x^2 + x^3) \cdot (1 + x + x^2 + x^3 + x^4)$$ 
 </span>
 
-<span style="color:silver;font-weight:700;font-size:30px">
+<span style="color:silver;font-weight:700;font-size:20px">
 $$=(x\cdot1 + xx + xx^2 + xx^3 + xx^4) + (x^2 + x^2x + x^2x^2 + x^2x^3 + x^2x^4) + (x^3 + x^3x + x^3x^2 + x^3x^3 + x^3x^4)$$
 </span>
 Why am I doing this? No, I didn't forget how to multiply polynomials, but it's here in this step that the important mechanics happen, and I want to proceed in slow motion so we don't miss it. Pay attention to what happens in the exponent here. We can re-write the above to be even more deliberate.
 
-<span style="color:silver;font-weight:700;font-size:30px">
+<span style="color:silver;font-weight:700;font-size:20px">
 $$= (x^{1+0} + x^{1+1} + x^{1+2} + x^{1+3} + x^{1+4})$$ 
 $$+ (x^{2+0} + x^{2+1} + x^{2+2} + x^{2+3} + x^{2+4})$$ 
 $$+ (x^{3+0} + x^{3+1} + x^{3+2} + x^{3+3} + x^{3+4})$$
@@ -75,21 +75,21 @@ $$+ (x^{3+0} + x^{3+1} + x^{3+2} + x^{3+3} + x^{3+4})$$
 **Each exponent corresponds to the sum of the two dice outcomes. When we combine like terms, the coefficients give the corresponding number of outcomes.** 
 		
 
-For instance $$1 + 3, 3 + 1, 2 + 2 $$ are all three ways that the sum comes out to $$4$$, and therefore we get $$3x^4$$ as a term in the final result (because of course of $$x^{1+3} + x^{3+1}+x^{2+2}$$ in the expression above). 
+For instance $$1 + 3, 3 + 1, 2 + 2 $$ are all three ways that the sum comes out to $$4$$, and therefore we get $$3x^4$$ as a term in the final result (because of course of $$x^{1+3} + x^{3+1}+x^{2+2}$$ in the expression above). Combining like terms we arrive at
 	
-<span style="color:silver;font-weight:700;font-size:30px">
+<span style="color:silver;font-weight:700;font-size:20px">
 $$\text{Roll}(x) = 1x^1 + 2x^2 + 3x^3 + 3x^4 + 3x^5 + 2x^6 + 1x^7$$  
 </span>	
 
-Total number of outcomes (the denominator) is 
+Since the coefficient of $$x^k$$ gives us the number of outcomes that sum to $k$, the total number of outcomes (the denominator) is just the sum of all of the coefficients. Which we can obtain automatically by substituting $$1$$ for $$x$$. 
 
-<span style="color:silver;font-weight:700;font-size:30px">
-$$\text{Roll}(1) = 1 + 1 + 3 + 3 + 3 + 2 + 1 = 15$$
+<span style="color:silver;font-weight:700;font-size:20px">
+$$\text{Roll}(1) = 1 + 2 + 3 + 3 + 3 + 2 + 1 = 15$$
 </span>
 
 # Generating Functions are Indexable!
 This is a good place to introduce some familiar *indexing notation*. The number of outcomes where the sum comes out to $$4$$ corresponds to the coefficient of $$x^4$$ in $$\text{Roll}(x)$$  (it's 3). Instead of saying that all of the time, we can use bracket notation, almost like an array in C but without the SEG-FAULT! 
-These should be clear, the last two are a bit of a trick. If a term isn't explicitly appearing, then it just means that its coefficient is $$0$$ (it's like a **sparse representation** if that term makes sense to you). 
+These should be clear, the last two are a bit of a trick. If a term isn't explicitly appearing, then it just means that it's coefficient is $$0$$ (it's like a **sparse representation** if that term makes sense to you). 
 1. $$\text{Roll}[x^4] = 3$$
 2. $$D_1[x^3] = 1$$
 3. $$D_2[x^0] = 1$$
@@ -97,16 +97,19 @@ These should be clear, the last two are a bit of a trick. If a term isn't explic
 5. $$\text{Roll}[x^8] = 0$$ 
 
 # Computing the Probability
-So the probability of the sum being $$k$$ is just 
-<span style="color:silver;font-weight:700;font-size:30px">
+So the probability of the sum being $$k$$ is again, the total number of ways $$k$$ can occur: $$\text{Roll[x^k]}$$, divided by the total number of outcomes: $$\text{Roll}(1) = 15$$. In other words 
+<span style="color:silver;font-weight:700;font-size:20px">
 $$p_k := \frac{\text{Roll}(x)[x^k]}{\text{Roll}(1)}.$$ 
 </span>
-For example
-$$p_4 = \frac{3}{14}$$, and we can go ahead and check that its actually a probability distribution $$p_1 + p_2 + \ldots + p_7 = 1$$. 
+Let's just go ahead and list all the non-zero probabilities: 
+
+$$p_1 = \frac{1}{15}, p_2 = \frac{2}{15}, p_3 = p_4 = p_5 = \frac{3}{15}, p_6 = \frac{2}{15},p_7 = \frac{1}{15}$$. 
 
 Finally the expected value here is just
+<span style="color:orange;font-weight:700;font-size:20px">
 $$\mathbb{E}(\text{dice sum}) = 1p_1 + 2p_2 + \ldots + 7p_7 = \frac{1}{15} + \frac{4}{15} + \frac{9}{15}
-+\frac{12}{15} + \frac{15}{15} + \frac{12}{15} + \frac{7}{15} = 4$$
++\frac{12}{15} + \frac{15}{15} + \frac{12}{15} + \frac{7}{15} = 4.$$
+</span>
 
 # What have we actually done here?
 Seems like we just went through a lot of tedious polynomial multiplication and arithmetic. What's so great about that? Well, for one, as engineers we know better than to discount a systematic method of solving tricky problems. Moreover we can actually skip a lot of the tedium by applying theorems from Math. In our case, all of what we did was equivalent to the one liner: 
