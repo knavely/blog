@@ -7,9 +7,9 @@ I have always felt that **Generating Functions(GF)** are like a programming lang
 In fact Herbert Wilf has apparently embraced this, even has a "Snake Oil Method" in his classic text [generatingfunctionology](https://www2.math.upenn.edu/~wilf/gfology2.pdf).
 
 I will try explain the magic from first principles and to give you, a practitioner of some sort, a tool you can use with working confidence. I'm doing my best to keep things informal, and intuitive, and so will likely offend formalist mathematical nit-pickers.  
-Generating Functions have blown me away since I was a first year student. I routinely stayed up all night trying to verify my GF solutions to various enumerative challenges, hampered by Maple/Mathematica timeouts, and more often than not resorting to brute force on the huge whiteboard we had in our flat with my roommate Clint. We even got thrown out of a Peterborough Ontario coffee shop late one night "for having a super lame math fight", which I only vaguely recall had something to do with whether or not order mattered for some formula or other. 
+Generating Functions have blown me away since I was a first year student. I routinely stayed up all night trying my GF solutions to various enumerative challenges. Verification was always a challenge because somehow we always mistrusted ourselves : In vain computational efforts like Maple/Mathematica timeouts, and more often than not resorting to brute force on the huge whiteboard we had in our flat with my roommate Clint, who was always a great sport. We even got thrown out of a Peterborough Ontario coffee shop late one night "for having a super lame math fight", as the barista described it, which I only vaguely recall had something to do with whether or not order mattered for some formula or other. No idea why "Bagel Schmagel" was open past midnight but it was... 
 
-Generating Functions were a tool that stuck with me after undergrad, that has been useful in a surprising large vertical of math and CS. I can not remember any of those formulas from Discrete Math 101 for "distinct slots into indistinct objects with/out replacement, etc.." but Generating Functions provide a general framework for solving all such problems. I want to replace memorization with fundamental understanding whenever possible. GFs have come in handy for Probability, Analysis of Algorithms, Recursion, Branching Processes, various Enumeration for its own sake... This blog is my attempt to impart some of those early fun times of being simultaneously mesmerized and confused.  
+Generating Functions were a tool that stuck with me after undergrad, that has been useful in a surprising large range of Math and CS. I can not remember any of those formulas from Discrete Math 101 for "distinct slots into indistinct objects with/out replacement, etc.." but Generating Functions provide a general framework for solving all sorts of problems. Yes, there are often other domain specific ways to go about things, but I like how knowing the GF framework removes a lot of memorization. For example the Master Theorem from Analysis of Algorithms.  Indeed GFs have come in handy for Probability, Analysis of Algorithms, Recursion, Branching Processes, various Enumeration for its own sake... This blog is my attempt to impart some of those early fun times of being simultaneously mesmerized and confused.  
 
 
 # Why are they called Generating Functions?
@@ -17,6 +17,7 @@ Call me old-fashioned, but I tend to think that names of things are there to con
 
 *  NOT _Generators of algebraic group_. OK, they are algebraic objects but we aren't really concerned Abstract Algebra here. 
 *  NOT _Generating Random Numbers/Objects_ Confusingly there is some relation but it's not the reason for the name
+*  NOT generative AI (I guess these days you have to say this)
 *  My guess is that they are called this because, the process in which they are constructed "generates" coefficients of great interest 
 
 Now, lets do a little **Hello World** example, which we will explain so thoroughly, that it will be enough to call it a day. 
@@ -44,7 +45,7 @@ When we roll it we could get $$x^1$$ OR $$x^2$$ OR $$x^3$$, replacing the OR wit
 <span style="color:gold;font-weight:700;font-size:20px"> $$D_1(x) := x^1 + x^2 + x^3$$ </span> 
 
 # Four sides of Dice II + Disappearing non-side
-<img src="assets/images/x00.png" width="200"/>
+<img src="assets/images/xx0.png" width="185"/>
 <img src="assets/images/x1.png" width="200"/>
 <img src="assets/images/x2.png" width="200"/>
 <img src="assets/images/x3.png" width="200"/>
@@ -53,7 +54,7 @@ When we roll it we could get $$x^1$$ OR $$x^2$$ OR $$x^3$$, replacing the OR wit
 <span style="color:gold;font-weight:700;font-size:20px">
 $$D_2(x) := x^0 + x^1 + x^2 + x^3 + x^4$$ </span> 
 
-# Roll the Dice
+# Rolling the Dice is the same as doing algebra
 Clearly the coefficients of $$x^i$$ in $$D_1$$ and $$D_2$$ correspond to the number of ways of rolling that side. Namely they are all $$1$$ or (implicitly) $$0$$. 
 
 Slightly less obvious is that the coefficient of $$x^i$$ in the product $$D_1 \cdot D_2$$ is the number of ways of rolling $i$ as a sum of both dice. 
@@ -72,10 +73,33 @@ $$= (x^{1+0} + x^{1+1} + x^{1+2} + x^{1+3} + x^{1+4})$$
 $$+ (x^{2+0} + x^{2+1} + x^{2+2} + x^{2+3} + x^{2+4})$$ 
 $$+ (x^{3+0} + x^{3+1} + x^{3+2} + x^{3+3} + x^{3+4})$$
 </span>	
-**Each exponent corresponds to the sum of the two dice outcomes. When we combine like terms, the coefficients give the corresponding number of outcomes.** 
-		
 
-For instance $$1 + 3, 3 + 1, 2 + 2 $$ are all three ways that the sum comes out to $$4$$, and therefore we get $$3x^4$$ as a term in the final result (because of course of $$x^{1+3} + x^{3+1}+x^{2+2}$$ in the expression above). Combining like terms we arrive at
+Each exponent here corresponds to the sum of the two dice outcomes. When we combine like terms, the coefficients give the corresponding number of outcomes. 
+		
+The terms above correspond to the individual dice outcomes:  
+
+<img src="assets/images/x1.png" width="50"/>
+<img src="assets/images/x2.png" width="50"/>
+<span style="color:silver;font-weight:700;font-size:20px">
+$$\Rightarrow x^1x^2 = x^{1+2} $$
+</span>
+
+<img src="assets/images/x2.png" width="50"/>
+<img src="assets/images/x0000.png" bgcolor="blue" width="50"/>
+<span style="color:silver;font-weight:700;font-size:20px">
+$$ \Rightarrow x^2x^0 = x^{2+0} $$
+</span>
+
+
+<img src="assets/images/x3.png" width="50"/>
+<img src="assets/images/x2.png" bgcolor="blue" width="50"/>
+<span style="color:silver;font-weight:700;font-size:20px">
+$$  \Rightarrow x^3x^2 = x^{3+2}$$
+</span>
+
+etc..
+
+Simplifying (combining like terms) gives the coefficients. For instance $$1 + 3, 3 + 1, 2 + 2 $$ are all three ways that the sum comes out to $$4$$, and therefore we get $$3x^4$$ as a term in the final result (because of course of $$x^{1+3} + x^{3+1}+x^{2+2}$$ in the expression above). Combining like terms we arrive at
 	
 <span style="color:silver;font-weight:700;font-size:20px">
 $$\text{Roll}(x) = 1x^1 + 2x^2 + 3x^3 + 3x^4 + 3x^5 + 2x^6 + 1x^7$$  
@@ -139,6 +163,8 @@ Tune in next time where we will employ some snazzy theorems to eliminate a lot o
 
 # Homework
 Try adding a third Dice, or add more sides to the other dice or both. You could even try really magical ones with many missing sides. The numbers will of course change, but the systematic process is identical. 
+
+Finally, get in touch on twitter if you have any suggestions for future episodes!
 
 # References 
 There are some really good, classic texts about Generating Functions, aimed at CS/Math Majors. I am a fan of all of these, but when I first encountered the topic, I was very immature mathematically, and found them quite challenging. I would be remiss if I didn't link to them here for anyone that wants to jump into a deeper end of the pool though. 
