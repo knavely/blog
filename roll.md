@@ -54,7 +54,7 @@ When we roll it we could get $$x^1$$ OR $$x^2$$ OR $$x^3$$, replacing the OR wit
 $$D_2(x) := x^0 + x^1 + x^2 + x^3 + x^4$$ </span> 
 
 # Roll the Dice
-Clearly the coefficients of $$x^i$$ in $$D_1$$ and $$D_2$$ correspond to the number of ways of rolling that side. Namely they are all $$1$$ or $$0$$. 
+Clearly the coefficients of $$x^i$$ in $$D_1$$ and $$D_2$$ correspond to the number of ways of rolling that side. Namely they are all $$1$$ or (implicitly) $$0$$. 
 
 Slightly less obvious is that the coefficient of $$x^i$$ in the product $$D_1 \cdot D_2$$ is the number of ways of rolling $i$ as a sum of both dice. 
 
@@ -91,10 +91,11 @@ $$\text{Roll}(1) = 1 + 2 + 3 + 3 + 3 + 2 + 1 = 15$$
 This is a good place to introduce some familiar *indexing notation*. The number of outcomes where the sum comes out to $$4$$ corresponds to the coefficient of $$x^4$$ in $$\text{Roll}(x)$$  (it's 3). Instead of saying that all of the time, we can use bracket notation, almost like an array in C but without the SEG-FAULT! 
 These should be clear, the last two are a bit of a trick. If a term isn't explicitly appearing, then it just means that it's coefficient is $$0$$ (it's like a **sparse representation** if that term makes sense to you). 
 1. $$\text{Roll}[x^4] = 3$$
-2. $$D_1[x^3] = 1$$
-3. $$D_2[x^0] = 1$$
-4. $$D_1[x^0] = 0$$ 
-5. $$\text{Roll}[x^8] = 0$$ 
+2. $$\text{Roll}[x^2] = 2$$
+3. $$D_1[x^3] = 1$$
+4. $$D_2[x^0] = 1$$
+5. $$D_1[x^0] = 0$$ 
+6. $$\text{Roll}[x^8] = 0$$ 
 
 # Computing the Probability
 So the probability of the sum being $$k$$ is again, the total number of ways $$k$$ can occur: $$\text{Roll[x^k]}$$, divided by the total number of outcomes: $$\text{Roll}(1) = 15$$. In other words 
