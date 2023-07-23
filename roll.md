@@ -1,15 +1,15 @@
 ---
 layout: default
 ---
-I have always felt that **Generating Functions(GF)** are like a programming language. Except instead of being about transistors and turning bits on and off, they are hacking the invisible and formless Math machine that permeates our universe or imagination of. So, I thought I'd write a programming style tutorial. When we introduce new programming languages, we don't start with all of the PL theory that goes into creating their compilers. We take it easy with all that stuff, and focus on familiar patterns, so that programmers can get comfortable in a new playground. Here, I am trying to take an approach like that but with Generating Functions, a classically mystifying area in the border lands of Mathematics and CS which has often been described as 
+I have always felt that **Generating Functions(GF)** are like a programming language. Except instead of being about transistors and turning bits on and off, they are hacking the invisible formless Math machine that permeates our universe and collective imagination. So, I thought I'd (attempt to) write a programming style tutorial for this classically mystifying area in the border lands of Mathematics and CS, which has been colorfully dismissed by more than one mathematician as: 
 > Like putting Water into Snake Oil !
 
-In fact Herbert Wilf has apparently embraced this, even has a "Snake Oil Method" in his classic text [generatingfunctionology](https://www2.math.upenn.edu/~wilf/gfology2.pdf).
+In fact Herbert Wilf has apparently embraced description, and he even has a "Snake Oil Method" in his classic text [generatingfunctionology](https://www2.math.upenn.edu/~wilf/gfology2.pdf).
 
-I will try explain the magic from first principles and to give you, a practitioner of some sort, a tool you can use with working confidence. I'm doing my best to keep things informal, and intuitive, and so will likely offend formalist mathematical nit-pickers.  
-Generating Functions have blown me away since I was a first year student. I routinely stayed up all night trying my GF solutions to various enumerative challenges. Verification was always a challenge because somehow we always mistrusted ourselves : In vain computational efforts like Maple/Mathematica timeouts, and more often than not resorting to brute force on the huge whiteboard we had in our flat with my roommate Clint, who was always a great sport. We even got thrown out of a Peterborough Ontario coffee shop late one night "for having a super lame math fight", as the barista described it, which I only vaguely recall had something to do with whether or not order mattered for some formula or other. No idea why "Bagel Schmagel" was open past midnight but it was... 
+I will try explain the magic from first principles and to give you, a practitioner of some sort, a tool you can use with working confidence. I'm doing my best to keep things informal, and intuitive, and so bound to offend formalist mathematical nit-pickers in one way or another.  
+Generating Functions have blown me away since I was a first year student. I routinely stayed up all night trying my GF solutions to various enumerative challenges. Verification was always a challenge because somehow we always mistrusted ourselves : In vain computational efforts like Maple/Mathematica timeouts, and more often than not resorting to brute force on the huge whiteboard we had in our flat with my roommate Clint, who was always a great sport. We even got thrown out of a Peterborough Ontario coffee shop late one night "for having a super lame math fight", as the barista described it...hey it's all fun and games until it's 3:00 and there are random walks with complex boundary conditions to contend with! 
 
-Generating Functions were a tool that stuck with me after undergrad, that has been useful in a surprising large range of Math and CS. I can not remember any of those formulas from Discrete Math 101 for "distinct slots into indistinct objects with/out replacement, etc.." but Generating Functions provide a general framework for solving all sorts of problems. Yes, there are often other domain specific ways to go about things, but I like how knowing the GF framework removes a lot of memorization. For example the Master Theorem from Analysis of Algorithms.  Indeed GFs have come in handy for Probability, Analysis of Algorithms, Recursion, Branching Processes, various Enumeration for its own sake... This blog is my attempt to impart some of those early fun times of being simultaneously mesmerized and confused.  
+Generating Functions are a tool that continue to be useful in a surprising range of Math and CS. I can not remember any of those formulas from Discrete Math 101 for "distinct slots into indistinct objects with/out replacement, etc.." but Generating Functions provide a general framework for solving all sorts of problems. Yes, there are often other domain specific ways to go about things, knowing the GF framework removes a lot of memorization, e.g. the Master Theorem from Analysis of Algorithms.  GFs have come in handy for Probability, Analysis of Algorithms, Recursion, Branching Processes, various Enumeration for its own sake... This blog is my attempt to impart some of those early fun times of being simultaneously mesmerized and confused.  
 
 
 # Why are they called Generating Functions?
@@ -24,7 +24,7 @@ Now, lets do a little **Hello World** example, which we will explain so thorough
 
 # Magical Dice Challenge (Easy)
 
-``Write some code in the programming language of your choice, or calculate otherwise, the expected sum of rolling two magical dice. One is (somehow) 3 sided, the other is 4 sided, except that it is magic, and sometimes(with uniform probability) it dissapears into an alternate dimesnion when rolled.``
+``Write some code in the programming language of your choice, or calculate otherwise, the expected sum of rolling two magical dice. One is (somehow) 3 sided, the other is 4 sided, except that it is magic, and sometimes(with uniform probability) it dissapears into an alternate dimension when rolled.``
 
 This is certainly not meant to be hard. Almost any technique will work, but you might be surprised that a solution boils down to not much more than writing two small polynomials and multiplying them together.
 
@@ -57,7 +57,7 @@ $$D_2(x) := x^0 + x^1 + x^2 + x^3 + x^4$$ </span>
 # Rolling the Dice is the same as doing algebra
 Clearly the coefficients of $$x^i$$ in $$D_1$$ and $$D_2$$ correspond to the number of ways of rolling that side. Namely they are all $$1$$ or (implicitly) $$0$$. 
 
-Slightly less obvious is that the coefficient of $$x^i$$ in the product $$D_1 \cdot D_2$$ is the number of ways of rolling $i$ as a sum of both dice. 
+Slightly less obvious is that the coefficient of $$x^i$$ in the product $$D_1 \cdot D_2$$ is the number of ways of rolling $$i$$ as a sum of both dice. 
 
 <span style="color:silver;font-weight:700;font-size:20px">
 $$\text{Roll}(x) := D_1(x) \cdot D_2(x) = (x + x^2 + x^3) \cdot (1 + x + x^2 + x^3 + x^4)$$ 
@@ -66,7 +66,7 @@ $$\text{Roll}(x) := D_1(x) \cdot D_2(x) = (x + x^2 + x^3) \cdot (1 + x + x^2 + x
 <span style="color:silver;font-weight:700;font-size:20px">
 $$=(x\cdot1 + xx + xx^2 + xx^3 + xx^4) + (x^2 + x^2x + x^2x^2 + x^2x^3 + x^2x^4) + (x^3 + x^3x + x^3x^2 + x^3x^3 + x^3x^4)$$
 </span>
-Why am I doing this? No, I didn't forget how to multiply polynomials, but it's here in this step that the important mechanics happen, and I want to proceed in slow motion so we don't miss it. Pay attention to what happens in the exponent here. We can re-write the above to be even more deliberate.
+Why am I doing this? No, I didn't forget how to multiply polynomials, but it's here in this step that the important mechanics happen, and I want to proceed in slow motion so we don't miss it. Pay attention to the exponent here. We can re-write the above to be even more deliberate.
 
 <span style="color:silver;font-weight:700;font-size:20px">
 $$= (x^{1+0} + x^{1+1} + x^{1+2} + x^{1+3} + x^{1+4})$$ 
