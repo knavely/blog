@@ -140,7 +140,7 @@ $$\mathbb{E}(\text{dice sum}) = 1p_1 + 2p_2 + \ldots + 7p_7 = \frac{1}{15} + \fr
 Seems like we just went through a lot of tedious polynomial multiplication and arithmetic. What's so great about that? Well, for one, as engineers we know better than to discount a systematic method of solving tricky problems. Moreover we can actually skip a lot of the tedium by applying theorems from Math. In our case, all of what we did was equivalent to the one liner: 
 
 <span style="color:gold;font-weight:700;font-size:30px">
-$$ \frac{x\frac{d}{dx}\text{Roll}(x)|_{x=1}}{\text{Roll}(1)} $$
+$$ \mathbb{E}(\text{dice sum}) = \frac{x\frac{d}{dx}\text{Roll}(x)|_{x=1}}{\text{Roll}(1)} $$
 </span>
 
 
