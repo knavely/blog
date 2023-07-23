@@ -105,7 +105,7 @@ Simplifying (combining like terms) gives the coefficients. For instance $$1 + 3,
 $$\text{Roll}(x) = 1x^1 + 2x^2 + 3x^3 + 3x^4 + 3x^5 + 2x^6 + 1x^7$$  
 </span>	
 
-Since the coefficient of $$x^k$$ gives us the number of outcomes that sum to $k$, the total number of outcomes (the denominator) is just the sum of all of the coefficients. Which we can obtain automatically by substituting $$1$$ for $$x$$. 
+Since the coefficient of $$x^k$$ gives us the number of outcomes that sum to $$k$$, the total number of outcomes (the denominator) is just the sum of all of the coefficients. Which we can obtain automatically by substituting $$1$$ for $$x$$. 
 
 <span style="color:silver;font-weight:700;font-size:20px">
 $$\text{Roll}(1) = 1 + 2 + 3 + 3 + 3 + 2 + 1 = 15$$
@@ -122,7 +122,7 @@ These should be clear, the last two are a bit of a trick. If a term isn't explic
 6. $$\text{Roll}[x^8] = 0$$ 
 
 # Computing the Probability
-So the probability of the sum being $$k$$ is again, the total number of ways $$k$$ can occur: $$\text{Roll[x^k]}$$, divided by the total number of outcomes: $$\text{Roll}(1) = 15$$. In other words 
+So the probability of the sum being $$k$$ is again, the total number of ways $$k$$ can occur: $$\text{Roll}[x^k]$$, divided by the total number of outcomes: $$\text{Roll}(1) = 15$$. In other words 
 <span style="color:silver;font-weight:700;font-size:20px">
 $$p_k := \frac{\text{Roll}(x)[x^k]}{\text{Roll}(1)}.$$ 
 </span>
