@@ -6,6 +6,109 @@ I have always felt that **Generating Functions(GF)** are like a programming lang
 
 In fact Herbert Wilf has apparently embraced description, and he even has a "Snake Oil Method" in his classic text [generatingfunctionology](https://www2.math.upenn.edu/~wilf/gfology2.pdf).
 
+# A Programmatic Teaser
+A formal power series is a little bit like a vector or other sequence Data-Structure. Take a Linked List with $$n$$ items as a example (the arrows are pointers, and the values are the $$v_i$$). 
+
+<span style="color:green;font-weight:700;font-size:20px">
+$$\texttt{List li} = \texttt{head} \rightarrow v_0 \rightarrow v_1 \rightarrow \ldots \rightarrow v_{n-1} $$
+</span>
+
+(Of course there are other snazzy recursive definitions as well)
+
+Typically operations include:
+
+1.  
+	<span style="color:green;font-weight:700;font-size:20px">
+	$$\texttt{head(li)} = v_0$$
+	</span>
+	*Return first element*
+	
+2.  
+<span style="color:green;font-weight:700;font-size:20px">
+$$\texttt{tail(li)} = [v_1,v_2,v_3,\ldots,v_{n-1}]$$
+</span>
+*return the rest of the list*
+3.  
+<span style="color:green;font-weight:700;font-size:20px">
+$$\texttt{sum(li)} = \sum_{i=0}^n v_i$$
+</span>
+
+4. <span style="color:green;font-weight:700;font-size:20px">
+$$\texttt{even(li)} = [v_0,v_2,v_4,\ldots]$$
+</span>
+*even indexed sub list*
+
+5. <span style="color:green;font-weight:700;font-size:20px">
+$$\texttt{prefix-sum(li)} = [\sum_{i=1}^k v_i \texttt{ for } k < n]$$
+</span>
+
+6. <span style="color:green;font-weight:700;font-size:20px">
+$$\texttt{append(li,v)} = [v,v_0,v_1,\ldots,v_n]$$
+</span>
+
+These should all be more or less familiar to programmers.
+
+Now lets look at how a formal power series can easily support the same operations!
+
+Our definition comes from not doing much more than swapping the $$\rightarrow$$ with the $$+$$.
+
+<span style="color:lightgreen;font-weight:700;font-size:20px">
+$$\texttt{li}(x) = v_0 + v_1x^1 + v_2x^2 + \ldots + v_nx^n$$
+</span>
+
+Our little mathematical object here is storing the same information but in it's coefficients. 
+
+1.  
+	<span style="color:lightgreen;font-weight:700;font-size:20px">
+	$$\texttt{head(li(x))} := \texttt{li}(0) = v_0$$
+	</span>
+	*Return first element*
+2.  
+<span style="color:lightgreen;font-weight:700;font-size:20px">
+$$\texttt{tail(li(x))} :=\texttt{li(x) - li(0) } = v_1x^1 + v_2x^2 + \ldots + v_nx^n$$
+</span>
+*the rest of the list*
+
+3.  
+<span style="color:lightgreen;font-weight:700;font-size:20px">
+$$\texttt{sum(li(x))} :=\texttt{li(1)} = v_0 + v_1 + \ldots + v_n$$
+</span>
+*sums the "list"* 
+
+4. <span style="color:lightgreen;font-weight:700;font-size:20px">
+$$\texttt{evens(li(x))} :=\frac{\texttt{li(-x) + li(x)}}{2} = v_0 + v_2x^2 + v_4x^4 + \ldots$$
+</span>
+*even indexed sub list*
+
+5. <span style="color:lightgreen;font-weight:700;font-size:20px">
+$$\texttt{odds(li(x))} := \texttt{li(x)} - \texttt{evens(li(x))}$$
+</span>
+
+6. <span style="color:lightgreen;font-weight:700;font-size:20px">
+$$\texttt{prefix-sum(li(x))}:= \frac{\texttt{li}(x)}{1-x} = v_0 + (v_0+v_1)x^1 +(v_0+v_1+v_2)x^2 + \ldots + \sum_{i=0}^k v_ix^k$$
+</span>
+*prefix-sum*
+
+6. <span style="color:lightgreen;font-weight:700;font-size:20px">
+$$\texttt{append(li,v)}:= v + x\texttt{li(x)} = v' + v_0x^1 + v_1x^2 + \ldots + v_nx^{n+1} $$
+</span>
+*append*
+
+Of course there are many things programming languages do that formal power series can not, in some cases it goes the other way as well. Like concisely representing an infinite number of 1s
+
+<span style="color:silver;font-weight:700;font-size:20px">
+$$\texttt{ones(x)} = 1 + x^1 + x^2 + \ldots  = 1 + x\texttt{ones(x)}$$
+</span>
+
+therefore
+
+<span style="color:gold;font-weight:700;font-size:20px">
+$$\texttt{ones(x)}(1-x) = 1$$, so that $$\texttt{ones(x)} = \frac{1}{1-x}$$
+</span>
+
+
+
+
 I will try explain the magic from first principles and to give you, a practitioner of some sort, a tool you can use with working confidence. I'm doing my best to keep things informal, and intuitive, and so bound to offend formalist mathematical nit-pickers in one way or another.  
 Generating Functions have blown me away since I was a first year student. I routinely stayed up all night trying my GF solutions to various enumerative challenges. Verification was always a challenge because somehow we always mistrusted ourselves : In vain computational efforts like Maple/Mathematica timeouts, and more often than not resorting to brute force on the huge whiteboard we had in our flat with my roommate Clint, who was always a great sport. We even got thrown out of a Peterborough Ontario coffee shop late one night "for having a super lame math fight", as the barista described it...hey it's all fun and games until it's 3:00 and there are random walks with complex boundary conditions to contend with! 
 
