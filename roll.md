@@ -269,6 +269,7 @@ Try adding a third Dice, or add more sides to the other dice or both. You could 
 
 Finally, get in touch on twitter if you have any suggestions for future episodes!
 
+[Part I Bonus Material](https://knavely.github.io/blog/interview)
 # References 
 There are some really good, classic texts about Generating Functions, aimed at CS/Math Majors. I am a fan of all of these, but when I first encountered the topic, I was very immature mathematically, and found them quite challenging. I would be remiss if I didn't link to them here for anyone that wants to jump into a deeper end of the pool though. 
 
