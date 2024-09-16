@@ -33,9 +33,9 @@ For more inspiration check out this excellent [2019 video by Neil Sloane](https:
 You may notice mention of studying Toroidal boards, and see that option in the app. However, we will save that for next time. **Here in this walkthrough we will stick with the classic chess board**.
 
 ## Just ask ChatGPT ?
-In case you were wondering, this was what ChatGPT (free version) spat out when I asked it to solve for $$n=10$$
+In case you were wondering, this was what ChatGPT spat out when I asked it to solve for $$n=4$$
 
-<img src="assets/images/peace/chat.png" width="600"/>
+<img src="assets/images/peace/chatgpt.png" width="600"/>
 <img src="assets/images/peace/gpttorus.png" width="600"/>
 
 Apparently it doesn't understand that in chess queens can move diagonally... and even then, it only has $$13$$ white queens (see below, 14 is possible). And that depiction of the toroidal board really cracks me up for some reason... I guess **Combinatorial Optimization** aint dead yet !

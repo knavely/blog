@@ -1,4 +1,79 @@
-<h1 id="like-a-rubiks-cube-of-chess">Like a Rubik’s cube of Chess</h1>
+<!DOCTYPE html>
+<head>
+    <title> Peaceable Queens </title>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/assets/css/style.css?v=">
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup theme-color -->
+<!-- start theme color meta headers -->
+<meta name="theme-color" content="#151515">
+<meta name="msapplication-navbutton-color" content="#151515">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<!-- end theme color meta headers -->
+
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+    <link rel="icon" type="image/x-icon" href="https://knavely.github.io/blog/assets/images/SUNFLOWER.gif">
+    <meta property="og:title" content="Pieceable">
+    <meta name="twitter:title" content="Pieceable">
+    
+    <meta property="og:image" content="https://knavely.github.io/blog/assets/images/ghost2.png">
+    <meta name="twitter:image" content="https://knavely.github.io/blog/assets/images/ghost2.png">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Hacking the Indeterminant | Generating Functions, Data Oriented Design, Algorithms, who knows what else..</title>
+<meta name="generator" content="Jekyll v4.3.2" />
+<meta property="og:title" content="Hacking the Indeterminant" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Generating Functions, Data Oriented Design, Algorithms, who knows what else.." />
+<meta property="og:description" content="Generating Functions, Data Oriented Design, Algorithms, who knows what else.." />
+<link rel="canonical" href="http://localhost:4000/peaceable.html" />
+<meta property="og:url" content="http://localhost:4000/peaceable.html" />
+<meta property="og:site_name" content="Hacking the Indeterminant" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Hacking the Indeterminant" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"Generating Functions, Data Oriented Design, Algorithms, who knows what else..","headline":"Hacking the Indeterminant","url":"http://localhost:4000/peaceable.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+  </head>
+
+  <body>
+
+    <header>
+      <div class="container">
+	<!--img src="assets/images/ghost.png" style="width:900px;height:400px;"-->
+        <a id="a-title" href="/">
+          <h1>Peaceable Queens Part 1</h1>
+        </a>
+        <h2>A Dangerously Addictive Problem</h2>
+	
+	 <a href="https://knavely.github.io/pieceable/" class="btn btn-peace"><span class="icon"></span></a>
+        <section id="downloads">
+          
+            <a href="https://github.com/knavely" class="btn btn-github"><span class="icon"></span>GitHub</a>
+	    <a href="https://sites.google.com/view/matthewdrescher" class="btn btn-matt"><span class="icon"></span>About Matthew Drescher</a>
+	          <a href="https://twitter.com/knavely" class="btn btn-matt"><span class="icon"></span>twtr</a>
+	</section>
+
+      </div>
+    </header>
+
+    <div class="container">
+      <section id="main_content">
+        <h1 id="like-a-rubiks-cube-of-chess">Like a Rubik’s cube of Chess</h1>
 <p>I have been low-key obsessed with this problem for a few years now. Possibly because it combines computing, math, and chess. But actually I think its just a great puzzle, that is very addicting, and challenging! It was very easy to get lost looking at the conjectures, related problems, open questions on the <a href="https://oeis.org/A250000">OEIS</a>.</p>
 
 <p>Our work lead to an academic <a href="https://arxiv.org/abs/2406.06974">paper</a>, but I wanted to say something about the process, so I decided to write this blog series. The first entry will be about introducing the problem, and some software I built which helped in studying it. The second entry will be more about programming: <strong>using a data oriented design</strong> approach to build the software.</p>
@@ -28,9 +103,9 @@ i.e. <strong>No white queen can capture a black queen but queens of the same col
 <p>You may notice mention of studying Toroidal boards, and see that option in the app. However, we will save that for next time. <strong>Here in this walkthrough we will stick with the classic chess board</strong>.</p>
 
 <h2 id="just-ask-chatgpt-">Just ask ChatGPT ?</h2>
-<p>In case you were wondering, this was what ChatGPT (free version) spat out when I asked it to solve for \(n=10\)</p>
+<p>In case you were wondering, this was what ChatGPT spat out when I asked it to solve for \(n=4\)</p>
 
-<p><img src="assets/images/peace/chat.png" width="600" />
+<p><img src="assets/images/peace/chatgpt.png" width="600" />
 <img src="assets/images/peace/gpttorus.png" width="600" /></p>
 
 <p>Apparently it doesn’t understand that in chess queens can move diagonally… and even then, it only has \(13\) white queens (see below, 14 is possible). And that depiction of the toroidal board really cracks me up for some reason… I guess <strong>Combinatorial Optimization</strong> aint dead yet !</p>
@@ -139,3 +214,10 @@ This is also something <a href="https://oeis.org/A260680">people are interested 
 
 <h2 id="tune-in-next-time-where-we-will-show-how-we-can-use-data-oriented-design-to-brute-force-through-all-optimal-solutions-on-the-original-board-for-n--8-in-just-a-few-hours-of-computation">Tune in next time, where we will show how we can use <strong>Data Oriented Design</strong> to brute force through <strong>all optimal solutions</strong> on the original board for \(n = 8\), in just a few hours of computation.</h2>
 
+
+      </section>
+    </div>
+  </body>
+</html>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
