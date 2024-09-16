@@ -24,7 +24,7 @@ In order to display things more simply, we use a grey $$n \times n$$ grid, with 
 
 Here we have a $$10 \times 10 $$ board, with $$7$$ white queens and $$11$$ black queens. Since none of the queens of opposite color can take each other, this is a valid position for the Peaceable Queens problem, although it is not optimal since the configuration below is better. It has $$14$$ queens of each color ($$14 > 7$$).
 
-<img src="assets/images/peace/better.png" width="300"/>
+<img src="assets/images/peace/perhaps.png" width="300"/>
 
 The [OEIS](https://oeis.org/A250000) is trying to collect as many terms as possible, but so far  only the first 15 terms are definitively known. So, it's both a fun, challenging puzzle, with the tantalizing possibility that a solution will either exceed the best known so far, or will shed light on one of the conjectures people have made on the site.
 
@@ -42,7 +42,6 @@ Apparently it doesn't understand that in chess queens can move diagonally... and
 
 BTW, the recent Sept 2024 o1-preview didn't perform any better. 
 
-<img src="assets/images/peace/perhaps.png" width="300"/>
 
 ## 8 x 8 Classic Board 
 Can you solve the problem on the original chess board ? The first thing I noticed when I wanted to start tinkering around with this problem was that it was just sort of painful. Kept drawing grids on paper, and as much as I love [lichess](https://lichess.org) for the actual game of chess, it's board editor just isn't made for this. So, I hacked together [this app](https://knavely.github.io/pieceable/) (absolutely no data is collected or anything. It runs fine in your browser offline), which helped us to write the paper [Constructions, bounds, and algorithms for peaceable queens](https://arxiv.org/abs/2406.06974). 
@@ -83,17 +82,14 @@ Notice that you can edit any of these configurations by clicking to add white qu
 	13. Note: by definition swapping might increase the number of queens
 	
 This is because there may have been squares that were not attacked by black. Swapping will put queens on these squares. See below, 4 queens are added to white(now black) in the swap.
-<img src="assets/images/peace/five2.png" width="300"/>
-<img src="assets/images/peace/fiveS2.png" width="300"/>
 
 ## Can you solve 8 x 8 ?
 
-I am very fond of this almost perfectly symmetric one the engine found early on in its development (thus the unicode). Actually, this  beauty is a big part of what got me hooked on this stuff! 
-
-<img src="assets/images/peace/symmetric8x8Q.png" width="300"/>
-<img src="assets/images/peace/symmetric2.png" width="300"/>
+Can you beat 5?
 
 Would you have guessed that you can fit $$m = 9$$ white queens and $$9$$ black queens in a non-attacking way on an $$8\times 8$$ chess board? It turns out that $$9$$ is the best we can do when $$n = 8$$. Try some different board sizes. 
+
+<img src="assets/images/peace/8x8Q.png" width="300"/>
 
 # Larger board sizes
 
@@ -105,7 +101,7 @@ I almost jumped out of my chair the first time I encountered this Ghostie in my 
 
 ## Ainley 1977
 The first known reference to this problem is from Ainley's 1977 book [Mathematical Puzzles](https://oeis.org/A250000/a250000_5.png). In which he actually gives a construction, pictured below for $$n=33$$, which achieves $$\frac{7}{48} n^2$$ for the smaller side. 
-<img src="assets/images/peace/33ainley158.png" style="width:400px;height:400px;">
+<img src="assets/images/peace/ainley.png" style="width:400px;height:400px;">
 
 ## Largest Aggressor 
 Bob Selcoe notes on [the oeis](https://oeis.org/A250000) that it is possible to have a solution with 32 white queens and 34 black queens (pictured below).  
@@ -123,7 +119,7 @@ For what it's worth, we believe that it's possible to extend the upper bound tec
 # Less is known about the Torus
 suppose we let the lines wrap around, like in Pac-Man where he comes out on the other side of the screen after eating the strawberry (or as [Richard Green](https://apieceofthepi.substack.com/p/peaceable-armies-of-queens) perhaps more clearly if you have played it, the classic game Asteroids.)
 
-<img src="assets/images/peace/pacman.png" width="500">
+<img src="assets/images/peace/pacman.jpeg" width="500">
 [image from](https://www.pinterest.com/bloemendal2386/)
 
 On the left we see one queen on the regular board casting her usual shadow. On the right we switch over to the torus, notice how the diagonals now wrap around. Seeing how this works, to extend the notion of diagonals to the torus, might not be totally obvious at first but if you just apply the rules **left + down** and **right + up** to "wrap around" it should hopefully start to make sense!
@@ -135,6 +131,7 @@ On the left we see one queen on the regular board casting her usual shadow. On t
 
 # Counting the number of Solutions
 <img src="assets/images/peace/brute.png" width="500">
+
 This is also something [people are interested in](https://oeis.org/A260680) .
 
 ## Tune in next time, where we will show how we can use **Data Oriented Design** to brute force through **all optimal solutions** on the original board for $$n = 8$$, in just a few hours of computation.

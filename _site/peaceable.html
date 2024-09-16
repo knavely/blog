@@ -94,7 +94,7 @@ i.e. <strong>No white queen can capture a black queen but queens of the same col
 
 <p>Here we have a \(10 \times 10\) board, with \(7\) white queens and \(11\) black queens. Since none of the queens of opposite color can take each other, this is a valid position for the Peaceable Queens problem, although it is not optimal since the configuration below is better. It has \(14\) queens of each color (\(14 &gt; 7\)).</p>
 
-<p><img src="assets/images/peace/better.png" width="300" /></p>
+<p><img src="assets/images/peace/perhaps.png" width="300" /></p>
 
 <p>The <a href="https://oeis.org/A250000">OEIS</a> is trying to collect as many terms as possible, but so far  only the first 15 terms are definitively known. So, it’s both a fun, challenging puzzle, with the tantalizing possibility that a solution will either exceed the best known so far, or will shed light on one of the conjectures people have made on the site.</p>
 
@@ -111,8 +111,6 @@ i.e. <strong>No white queen can capture a black queen but queens of the same col
 <p>Apparently it doesn’t understand that in chess queens can move diagonally… and even then, it only has \(13\) white queens (see below, 14 is possible). And that depiction of the toroidal board really cracks me up for some reason… I guess <strong>Combinatorial Optimization</strong> aint dead yet !</p>
 
 <p>BTW, the recent Sept 2024 o1-preview didn’t perform any better.</p>
-
-<p><img src="assets/images/peace/perhaps.png" width="300" /></p>
 
 <h2 id="8-x-8-classic-board">8 x 8 Classic Board</h2>
 <p>Can you solve the problem on the original chess board ? The first thing I noticed when I wanted to start tinkering around with this problem was that it was just sort of painful. Kept drawing grids on paper, and as much as I love <a href="https://lichess.org">lichess</a> for the actual game of chess, it’s board editor just isn’t made for this. So, I hacked together <a href="https://knavely.github.io/pieceable/">this app</a> (absolutely no data is collected or anything. It runs fine in your browser offline), which helped us to write the paper <a href="https://arxiv.org/abs/2406.06974">Constructions, bounds, and algorithms for peaceable queens</a>.</p>
@@ -156,18 +154,15 @@ Does the solution surprise you? (ignore Solve from Here)
 13. Note: by definition swapping might increase the number of queens
 </code></pre></div></div>
 
-<p>This is because there may have been squares that were not attacked by black. Swapping will put queens on these squares. See below, 4 queens are added to white(now black) in the swap.
-<img src="assets/images/peace/five2.png" width="300" />
-<img src="assets/images/peace/fiveS2.png" width="300" /></p>
+<p>This is because there may have been squares that were not attacked by black. Swapping will put queens on these squares. See below, 4 queens are added to white(now black) in the swap.</p>
 
 <h2 id="can-you-solve-8-x-8-">Can you solve 8 x 8 ?</h2>
 
-<p>I am very fond of this almost perfectly symmetric one the engine found early on in its development (thus the unicode). Actually, this  beauty is a big part of what got me hooked on this stuff!</p>
-
-<p><img src="assets/images/peace/symmetric8x8Q.png" width="300" />
-<img src="assets/images/peace/symmetric2.png" width="300" /></p>
+<p>Can you beat 5?</p>
 
 <p>Would you have guessed that you can fit \(m = 9\) white queens and \(9\) black queens in a non-attacking way on an \(8\times 8\) chess board? It turns out that \(9\) is the best we can do when \(n = 8\). Try some different board sizes.</p>
+
+<p><img src="assets/images/peace/8x8Q.png" width="300" /></p>
 
 <h1 id="larger-board-sizes">Larger board sizes</h1>
 
@@ -180,7 +175,7 @@ Does the solution surprise you? (ignore Solve from Here)
 
 <h2 id="ainley-1977">Ainley 1977</h2>
 <p>The first known reference to this problem is from Ainley’s 1977 book <a href="https://oeis.org/A250000/a250000_5.png">Mathematical Puzzles</a>. In which he actually gives a construction, pictured below for \(n=33\), which achieves \(\frac{7}{48} n^2\) for the smaller side. 
-<img src="assets/images/peace/33ainley158.png" style="width:400px;height:400px;" /></p>
+<img src="assets/images/peace/ainley.png" style="width:400px;height:400px;" /></p>
 
 <h2 id="largest-aggressor">Largest Aggressor</h2>
 <p>Bob Selcoe notes on <a href="https://oeis.org/A250000">the oeis</a> that it is possible to have a solution with 32 white queens and 34 black queens (pictured below).</p>
@@ -198,7 +193,7 @@ Does the solution surprise you? (ignore Solve from Here)
 <h1 id="less-is-known-about-the-torus">Less is known about the Torus</h1>
 <p>suppose we let the lines wrap around, like in Pac-Man where he comes out on the other side of the screen after eating the strawberry (or as <a href="https://apieceofthepi.substack.com/p/peaceable-armies-of-queens">Richard Green</a> perhaps more clearly if you have played it, the classic game Asteroids.)</p>
 
-<p><img src="assets/images/peace/pacman.png" width="500" />
+<p><img src="assets/images/peace/pacman.jpeg" width="500" />
 <a href="https://www.pinterest.com/bloemendal2386/">image from</a></p>
 
 <p>On the left we see one queen on the regular board casting her usual shadow. On the right we switch over to the torus, notice how the diagonals now wrap around. Seeing how this works, to extend the notion of diagonals to the torus, might not be totally obvious at first but if you just apply the rules <strong>left + down</strong> and <strong>right + up</strong> to “wrap around” it should hopefully start to make sense!</p>
@@ -209,8 +204,9 @@ Does the solution surprise you? (ignore Solve from Here)
 <p>Now the queens cover more territory, so the solutions to the regular board no longer apply. <a href="https://oeis.org/A279405">This Toroidal Problem</a> has it’s own entry on the oeis, and only \(12\) terms are definitively known at the moment.</p>
 
 <h1 id="counting-the-number-of-solutions">Counting the number of Solutions</h1>
-<p><img src="assets/images/peace/brute.png" width="500" />
-This is also something <a href="https://oeis.org/A260680">people are interested in</a> .</p>
+<p><img src="assets/images/peace/brute.png" width="500" /></p>
+
+<p>This is also something <a href="https://oeis.org/A260680">people are interested in</a> .</p>
 
 <h2 id="tune-in-next-time-where-we-will-show-how-we-can-use-data-oriented-design-to-brute-force-through-all-optimal-solutions-on-the-original-board-for-n--8-in-just-a-few-hours-of-computation">Tune in next time, where we will show how we can use <strong>Data Oriented Design</strong> to brute force through <strong>all optimal solutions</strong> on the original board for \(n = 8\), in just a few hours of computation.</h2>
 
