@@ -137,3 +137,4 @@ This is also something [people are interested in](https://oeis.org/A260680) .
 ## Tune in next time, where we will show how we can use **Data Oriented Design** to brute force through **all optimal solutions** on the original board for $$n = 8$$, in just a few hours of computation.
 
 
+<img src="assets/images/ghost2.jpg" style="width:400px;height:400px;">
