@@ -38,7 +38,7 @@ In case you were wondering, this was what ChatGPT spat out when I asked it to so
 <img src="assets/images/peace/chatgpt.png" width="600"/>
 <img src="assets/images/peace/gpttorus.png" width="600"/>
 
-Apparently it doesn't understand that in chess queens can move diagonally... and even then, it only has $$13$$ white queens (see below, 14 is possible). And that depiction of the toroidal board really cracks me up for some reason... I guess **Combinatorial Optimization** aint dead yet !
+Apparently it doesn't understand that in chess queens can move diagonally... but it seems to have at least gotten the right number for $$n=4$$. For $$n=10$$ on the other hand it came up with only $$13$$ white queens (see below, 14 is possible). And that depiction of the toroidal board really cracks me up for some reason... I guess **Combinatorial Optimization** aint dead yet !
 
 BTW, the recent Sept 2024 o1-preview didn't perform any better. 
 
