@@ -30,8 +30,6 @@ The [OEIS](https://oeis.org/A250000) is trying to collect as many terms as possi
 
 For more inspiration check out this excellent [2019 video by Neil Sloane](https://www.youtube.com/watch?v=IN1fPtY9jYg). Here [Richard Green](https://apieceofthepi.substack.com/p/peaceable-armies-of-queens) has a blog post covering more recent progress.
 
-You may notice mention of studying Toroidal boards, and see that option in the app. However, we will save that for next time. **Here in this walkthrough we will stick with the classic chess board**.
-
 ## Just ask ChatGPT ?
 In case you were wondering, this was what ChatGPT spat out when I asked it to solve for $$n=4$$
 
