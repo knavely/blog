@@ -106,7 +106,7 @@ Would you have guessed that you can fit $$m = 9$$ white queens and $$9$$ black q
 
 <img src="assets/images/ghost.png" style="width:400px;height:400px;">
 
-I almost jumped out of my chair the first time I encountered this Ghostie in my Machine! It's not optimal thankfully, because that would be very frightening.
+I almost jumped out of my chair the first time I encountered this Ghostie in my Machine! It's not optimal thankfully, but it's a bit unsettling how good it is!
 
 	14. use the drop down to change the size of the board to 15
 
