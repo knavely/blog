@@ -42,6 +42,19 @@ Apparently it doesn't understand that in chess queens can move diagonally... and
 
 BTW, the recent Sept 2024 o1-preview didn't perform any better. 
 
+# Are there any applications?
+According to ChatGPT (which seems to do just about as well at this as anyone)
+While the Peaceable Queens problem is rooted in theoretical and recreational mathematics, its applications span multiple disciplines that require optimization under constraints. It serves as a valuable model for:
+
+* Developing and testing algorithms in AI and computer science.
+    
+* Solving practical problems in engineering, such as circuit design and network optimization.
+    
+* Enhancing understanding of complex systems in ecology and economics.
+    
+* Educating and engaging students and enthusiasts in mathematical thinking.
+
+By exploring and solving this problem, researchers and practitioners gain insights that can be transferred to real-world challenges involving resource allocation, scheduling, and system optimization.
 
 ## 8 x 8 Classic Board 
 Can you solve the problem on the original chess board ? The first thing I noticed when I wanted to start tinkering around with this problem was that it was just sort of painful. Kept drawing grids on paper, and as much as I love [lichess](https://lichess.org) for the actual game of chess, it's board editor just isn't made for this. So, I hacked together [this app](https://knavely.github.io/pieceable/) (absolutely no data is collected or anything. It runs fine in your browser offline), which helped us to write the paper [Constructions, bounds, and algorithms for peaceable queens](https://arxiv.org/abs/2406.06974). 
