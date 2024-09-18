@@ -77,7 +77,7 @@ You can now experiment with the radio button, selecting "Torus" or "Classic" mod
 	
 	6. The highlighted area is now grey, representing neutral part of the board (containing no queen)
 	7. The white score box has changed from 0 to 1 indicating that there is now 1 white queen.
-	8. That the black score box has changed from 64 to 36 indicating that 18 black queens have now fled
+	8. That the black score box has changed from 64 to 36 indicating that 28 black queens have now fled
 	9. Click on the square one more time to remove the white queen and return the 64 black queens
 
 Now it's time for some fun. What is the "best" solution you can find that has the largest number of equal black and white queens? You should be able to at least beat this in-optimal example that gets 5:
