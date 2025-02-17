@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<head>
+    <title> Peaceable Queens </title>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}">
+    {% include head-custom.html %}
+    <link rel="icon" type="image/x-icon" href="https://knavely.github.io/blog/assets/images/SUNFLOWER.gif">
+    <meta property="og:title" content="Peaceable Queens">
+    <meta name="twitter:title" content="Peaceable Queens">
+    
+    <meta property="og:image" content="https://knavely.github.io/blog/assets/images/ghost2.png">
+    <meta name="twitter:image" content="https://knavely.github.io/blog/assets/images/ghost2.png">
+
+{% seo %}
+  </head>
+
+  <body>
+
+    <header>
+      <div class="container">
+	<!--img src="assets/images/ghost.png" style="width:900px;height:400px;"-->
+        <a id="a-title" href="{{ '/dod' | relative_url }}">
+          <h1>Peaceable Bits</h1>
+        </a>
+        <h2><font color="silver">Peaceable Queens Part 2: A Data Oriented Approach</font></h2>
+	
+	 <a href="https://knavely.github.io/pieceable/" class="btn btn-dod"><span class="icon"></span></a>
+        <section id="downloads">
+          {% if site.show_downloads %}
+            <a href="{{ site.github.zip_url }}" class="btn">Download as .zip</a>
+            <a href="{{ site.github.tar_url }}" class="btn">Download as .tar.gz</a>
+          {% endif %}
+            <a href="https://github.com/knavely" class="btn btn-github"><span class="icon"></span>GitHub</a>
+	    <a href="https://sites.google.com/view/matthewdrescher" class="btn btn-matt"><span class="icon"></span>About Matthew Drescher</a>
+	          <a href="https://twitter.com/knavely" class="btn btn-matt"><span class="icon"></span>twtr</a>
+	</section>
+
+      </div>
+    </header>
+
+    <div class="container">
+      <section id="main_content">
+        {{ content }}
+      </section>
+    </div>
+  </body>
+</html>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
