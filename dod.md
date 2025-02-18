@@ -9,8 +9,16 @@ Recall: **We are trying to put an army of white queens and an army of black quee
 
 The solutions for $$n \leq 15$$ are known on the [OES](https://oeis.org/A250000), and we discuss, at the end of this blog, why our approach here wont scale as is to breach new ground of $$n = 16$$. Still, *we definitely invite you the reader to take a stab at $$n=8$$ before continuing to read this.* Remember, we don't just need a lower bound construction, we need a demonstrably optimal solution.  
 
-# My Backstory 
-I was taking John D. Owens's graduate class on Modern GPU Programming at UC Davis in fall 2022, which, btw, I highly recommend for anyone interested in CUDA. Anyway, he basically gave us the Peaceable Queens problem as a challenging homework assignment. *Of course there were ways to receive credit without actually breaking new ground in terms of the OES*, and I think the real point of the assignment was to learn how to use work queues so as to apply an exhaustive branch and bound to definitively solve for as large $$n$$ as possible. 
+# The State of LLM's
+It's been about 6 months since I posted [part 1](https://knavely.github.io/blog/peaceable) where we observed ChatGPT struggle. In that time the Large Language Models have been advancing in many ways, yet not so much for the Peaceable Queens.
+
+**OpenAI's o3** seems to be the first one I have tried that successfully realizes that queens of opposite color can take each other on diagonals, and avoids this in the configurations it prints out for small $$n$$. However, for $$n=8$$ it insisted that the maximum possible to peacefully co-exist is $$7$$ of each color -- which is obviously incorrect, it should be $$9$$. 
+*When I gave it valid references, it admitted it was wrong, yet still hilariously insisted that must have been due to recent breakthroughs.*
+
+Anyway, my point is not that we should expect an LLM to serve as a combinatoriol optimization solver, but it does seem reasonable that an "AGI" should achieve a correct solution for small $$n$$ here, does it not? If captain Picard asked the ship's computer, it would definitely have the answer -- so I find the problem to be a handy little challenge for these nifty new AI models that emerge these days.
+
+# How I stumbled onto the Peaceable Queens Problem 
+I was taking John D. Owens's graduate class on Modern GPU Programming at UC Davis in fall 2022, which, btw, I highly recommend for anyone interested in CUDA. Anyway, he basically gave us the Peaceable Queens problem as a challenging homework assignment. *Of course there were ways to receive credit without actually breaking new ground in terms of the [OES](https://oeis.org/A250000)*, and I think the real point of the assignment was to learn how to use work queues so as to apply an exhaustive branch and bound to definitively solve for as large $$n$$ as possible. 
 
 I started playing around with things on the regular 8x8 chess board. It occurred to me that whereas chess has multiple types of pieces, bishops, pawns, knights, etc, this problem has only Queens, albeit in two colors. Knowing a little about the data structures used in Chess Engines, it seemed possible to get a very concise representation of the Peaceable Queens: Could we use a single $$\texttt{uint64}$$ to represent the white queens? Can we efficiently use bit-wise operations to then compute black? And down the rabbit hole I went...   
 
