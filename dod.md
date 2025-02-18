@@ -59,7 +59,7 @@ BOARD compute_black_queens(BOARD white_queens){
 That's just "a couple" of CPU cycles! It's so cheap, we don't even need to store the other color. Just compute it. At this point it's probably worthwhile to take a second to convince yourself of the following observations:
 
 <span style="color:gold;font-weight:700;font-size:20px">
-Given an uneven position with $$W$$ white queens and $$B$$ black queens, with $$W > B$$ we can obtain an even position with $$W$$ white and $$W$$ black queens. 
+Given an uneven position with $$W$$ white queens and $$B$$ black queens, with $$W > B$$ we can obtain an even position with $$B$$ white and $$B$$ black queens. 
 </span>
 
 This is because we can always remove excess queens from the larger army. This plus the fact that the armies must be non-attacking, means that we **only need one color's position to completely characterize a solution**
